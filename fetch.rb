@@ -25,4 +25,14 @@ class Fetcher
       f.write(_fetch)
     end
   end
+
+  def self.fetch_all(urls)
+    urls.each do |url|
+      begin
+        Fetcher.new(url).fetch
+      rescue => e
+        $stderr.puts "ERROR: #{url}: #{e}"
+      end
+    end
+  end
 end

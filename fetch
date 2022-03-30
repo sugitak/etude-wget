@@ -9,6 +9,4 @@ OptionParser.new do |opts|
   opts.banner = "Usage: fetch <URI> [<URI> [...]]"
 end.parse!
 
-ARGV.each do |url|
-  Fetcher.new(url).fetch
-end
+Fetcher.fetch_all(ARGV)
