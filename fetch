@@ -3,10 +3,18 @@
 require 'optparse'
 require './fetch.rb'
 
-options = {}
+options = {:show_metadata => false}
 
 OptionParser.new do |opts|
   opts.banner = "Usage: fetch <URI> [<URI> [...]]"
+
+  opts.on('-m', '--metadata', 'show metadata') do |opt|
+    options[:show_metadata] = opt
+  end
 end.parse!
 
-Fetcher.fetch_all(ARGV)
+if options[:show_metadata]
+  Fetcher.fetch_all_metadata(ARGV)
+else
+  Fetcher.fetch_all(ARGV)
+end
