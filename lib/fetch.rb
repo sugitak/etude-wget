@@ -64,7 +64,8 @@ class Fetcher
     end
 
     def filename
-      @filename ||= "run/.meta__#{@uri.host}.html"
+      cwd = File.dirname(__FILE__)
+      @filename ||= "#{cwd}/../run/.meta__#{@uri.host}.html"
     end
 
     def set_meta

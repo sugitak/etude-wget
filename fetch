@@ -2,7 +2,7 @@
 
 require 'optparse'
 cwd = File.dirname(__FILE__)
-require "./#{cwd}/lib/fetch.rb"
+require "#{cwd}/lib/fetch.rb"
 
 options = {:show_metadata => false}
 
