@@ -19,4 +19,13 @@ class TestCase_Parser < Test::Unit::TestCase
   def test_count_images
     assert_equal 1, parser.count_images
   end
+
+  def test_canonical_path
+    assert_equal "some.host_some_path.img",
+      Parser.canonical_path("https://some.host/some/path.img")
+    assert_equal "some.host_some_path.img",
+      Parser.canonical_path("some.host/some/path.img")
+    assert_equal "some.host_some_path.img",
+      Parser.canonical_path("./some.host/some/path.img")
+  end
 end

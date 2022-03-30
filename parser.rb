@@ -1,4 +1,5 @@
 require 'nokogiri'
+require 'uri'
 
 class Parser
   def initialize(data)
@@ -24,6 +25,13 @@ class Parser
 
   def replace_images_to_local_path
     images.each do |image|
+      image.src = Parser.canonical_path(image.src)
     end
+  end
+
+  def self.canonical_path(path)
+    uri = URI.parse(path)
+    tmp_path = "#{uri.host}#{uri.path}"
+    new_path = tmp_path.gsub(/^(\.\/)+/,"").gsub(/[\/-]/, "_")
   end
 end
