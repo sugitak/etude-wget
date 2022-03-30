@@ -6,9 +6,6 @@ This is an etude application for file fetching.
 
 You need to be able to run Ruby 2.7 and bundler.
 
-```
-
-```
 
 ## Usage
 
