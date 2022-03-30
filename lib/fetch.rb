@@ -1,6 +1,6 @@
 require 'open-uri'
 require 'time'
-require './parser'
+require './lib/parser'
 
 class Fetcher
   def initialize(url)
