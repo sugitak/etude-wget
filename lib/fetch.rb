@@ -1,6 +1,8 @@
 require 'open-uri'
 require 'time'
-require './lib/parser'
+
+cwd = File.dirname(__FILE__)
+require "#{cwd}/parser"
 
 class Fetcher
   def initialize(url)
@@ -62,7 +64,7 @@ class Fetcher
     end
 
     def filename
-      @filename ||= ".meta__#{@uri.host}.html"
+      @filename ||= "run/.meta__#{@uri.host}.html"
     end
 
     def set_meta
@@ -72,7 +74,7 @@ class Fetcher
       @last_fetch ||= Time.now
     end
 
-    # This time, simply use file :<
+    # This time, simply output to file :<
     # It would be better if I use SQLite3 so that I can save all the history
     def save!
       File.open(filename, mode="w") do |f|

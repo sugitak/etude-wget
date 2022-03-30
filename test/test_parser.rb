@@ -1,5 +1,6 @@
 require 'test/unit'
-require './lib/parser'
+cwd = File.dirname(__FILE__)
+require "./#{cwd}/../lib/parser"
 
 class TestCase_Parser < Test::Unit::TestCase
   def setup

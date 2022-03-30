@@ -1,12 +1,17 @@
 #!/usr/bin/env ruby
 
 require 'optparse'
-require './lib/fetch.rb'
+cwd = File.dirname(__FILE__)
+require "./#{cwd}/lib/fetch.rb"
 
 options = {:show_metadata => false}
 
 OptionParser.new do |opts|
   opts.banner = "Usage: fetch <URI> [<URI> [...]]"
+
+  opts.on('-m', '--metadata', 'show metadata') do |opt|
+    options[:show_metadata] = opt
+  end
 
   opts.on('-m', '--metadata', 'show metadata') do |opt|
     options[:show_metadata] = opt
